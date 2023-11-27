@@ -4,3 +4,73 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: absolute;
+    background-color: rgba(255,255,255,0.3);
+}
+
+.container {
+    max-width: 1200px;
+    height: 600px;
+    margin: 3rem auto;
+    display: flex;
+    position: relative;
+}
+
+.container .mainSector {
+    width: 70%;
+}
+
+.mainSector article {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.mainColumn article img {
+    width: 100%;
+    height: 100%;
+}
+
+.mainSector .description {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    text-align: end;
+    color: white;
+}
+
+.container .thumbnails {
+    width: 30%;
+}
+
+.thumbnails .thumbnail {
+    height: calc(100% / 5);
+}
+
+.thumbnails .thumbnail img {
+    width: 100%;
+    height: 100%;
+}
+
+#previous,
+#next {
+    top: 0.5rem;
+    right: 13%;
+}
+
+/*
+#next {
+    bottom: 0.5rem;
+    right: 13%;
+}
+*/
+
+.active {
+    border: 5px solid red;
+}
