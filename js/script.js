@@ -27,11 +27,77 @@ const images = [
     }
 ];
 
- //Variabili
- let activeImg = 0;
 
-const mainSectorEl = document.querySelector(".mainSector");
-const miniaturesEl = document.querySelector(".miniatures");
-const beforeButton = document.getElementById("previous");
-const nextButton = document.getElementById("next");
+const items = document.querySelector('.items');
+
+let currentImage = 0;
+
+const elementTemplate = document.getElementById('objectTemplate').content;
+
+images.forEach((element, index) => {
+    const nodeInfoImage = elementTemplate.cloneNode(true);
+
+    nodeInfoImage.querySelector('h3').textContent = element.titolo;
+    nodeInfoImage.querySelector('span').textContent = element.descrizione;
+    nodeInfoImage.querySelector('img').src = `${element.image}`;
+    nodeInfoImage.querySelector('img').alt = `Landscape ${index + 1}`;
+    items.append(nodeInfoImage);
+})
+
+const firstImage = items.querySelector('.item');
+firstImage.classList.add('active');
+
+function next(){
+    elementBoxesImagesDom[currentImage].classList.remove('active');
+
+    if (currentImage === elementBoxesImagesDom.length - 1) {
+        currentImage = 0; 
+    } else {
+        currentImage++;
+    }
+    elementBoxesImagesDom[currentImage].classList.add('active');
+};
+
+function prev() { 
+    elementBoxesImagesDom[currentImage].classList.remove('active');
+
+    if (currentImage === 0) {
+        currentImage = elementBoxesImagesDom.length - 1; 
+    } else {
+        currentImage--;
+    }
+    elementBoxesImagesDom[currentImage].classList.add('active');
+}
+
+const elementBoxesImagesDom = document.querySelectorAll('.item');
+
+//elementi in dom prev e next
+const elementPrev = document.querySelector('.prev');
+const elementNext = document.querySelector('.next');
+
+//eventi su prev e next
+elementPrev.addEventListener('click', next);
+elementNext.addEventListener('click', prev);
+
+let autoplayCarousel;
+
+//elementi in dom play e stop
+const playButton = document.querySelector('.play');
+const stopButton = document.querySelector('.stop');
+
+
+//eventi play e stop
+playButton.addEventListener('click', function() {
+    autoplayCarousel = setInterval(next, 3000);
+    console.log('ho cliccato play');
+});
+
+stopButton.addEventListener('click', function () {
+    clearInterval(autoplayCarousel);
+    console.log('ho cliccato stop');
+});
+
+//autoplay
+playButton.addEventListener('click', next);
+stopButton.addEventListener('click', next);
 

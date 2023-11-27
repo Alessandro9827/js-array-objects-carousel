@@ -10,20 +10,29 @@
     <title>Carousel</title>
 </head>
 <body>
-    <main>
-        <div class="container">
-            <div class="mainSector">
-            </div>
-            <div class="miniatures">
-            </div>
-            <button id="previous" class="btn">
-                <i class="fa-solid fa-square-caret-up"></i>
-            </button>
-            <button id="next" class="btn">
-                <i class="fa-solid fa-square-caret-down"></i>
-            </i></button>
+    <div class="container">
+        <div class="items">
+          <div class="prev">
+            <i class="fa-solid fa-arrow-up"></i>
+          </div>
+          <div class="next">
+            <i class="fa-solid fa-arrow-down"></i>
+          </div>
         </div>
-    </main>
+        
+        <div class="buttons">
+          <button class="play">Play</button>
+          <button class="stop">Stop</button>
+        </div>
+    </div>
+    <template id="objectTemplate">
+        <div class="item">
+          <img src="" alt="">
+          <h3></h3>
+          <span></span>
+        </div>
+    </template>
+
     <!--script js-->
     <script src="./js/script.js"></script>
 </body>
